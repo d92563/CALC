@@ -1,0 +1,29 @@
+.calc-container {
+    display: flex;
+
+    
+}
+
+.numbers {
+   
+    border: 1px solid black;
+}
+
+.calc-container {
+    display:grid;
+
+    border: 1px solid black;
+}
+
+
+.screen {
+
+
+    border: 1px solid black;
+}
+
+
+.keys {
+    display:grid;
+    grid-template-columns: 50px 50px 50px 100px 100px;
+}
