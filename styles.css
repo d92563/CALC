@@ -1,7 +1,8 @@
-.calc-container {
+.main-container {
     display: flex;
-
-    
+    padding-top: 10vh;
+    justify-content: space-evenly;
+ 
 }
 
 .numbers {
@@ -11,19 +12,58 @@
 
 .calc-container {
     display:grid;
-
+    grid-template-rows: 1fr 4fr;
     border: 1px solid black;
+    background-color: darkslategray;
 }
 
 
 .screen {
-
-
+    background-color: rgb(141, 133, 133);
     border: 1px solid black;
+    padding: 5px;
+
 }
 
 
 .keys {
     display:grid;
-    grid-template-columns: 50px 50px 50px 100px 100px;
+    grid-template-columns: repeat(7, 3rem);
+    grid-gap: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    
+}
+.key {
+    background-color: rgb(149, 105, 105);
+    font-weight: bold;
+    
+}
+
+.key-del {
+    grid-column: 4 / span 2;
+    
+}
+
+.key-ac {
+    grid-column: 6 / span 2;
+}
+
+.key-multiply {
+    grid-column: 4 / span 2;
+}
+.key-divide {
+    grid-column: 6 / span 2;
+}
+.key-add {
+    grid-column: 4 / span 2;
+}
+.key-substract {
+    grid-column: 6 / span 2;
+}
+.key-0 {
+    grid-column: 1 / span 2;
+}
+.key-equal {
+    grid-column: 4 / span 4;
 }
