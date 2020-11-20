@@ -5,34 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
-<body>
-<div class="main-container">   
-  <div class="calc-container">
-    <div class="screen">123456789</div>
-    <div class="keys">
-      <button class="key key-7">7</button>
-      <button class="key key-8">8</button>
-      <button class="key key-9">9</button>
-      <button class="key key-del">DEL</button>
-      <button class="key key-ac">AC</button>
-      <button class="key key-4">4</button>
-      <button class="key key-5">5</button>
-      <button class="key key-6">6</button>
-      <button class="key key-multiply">*</button>
-      <button class="key key-divide">/</button>
-      <button class="key key-1">1</button>
-      <button class="key key-2">2</button>
-      <button class="key key-3">3</button>
-      <button class="key key-add">+</button>
-      <button class="key key-substract">-</button>
-      <button class="key key-0">0</button>
-      <button class="key key-point">.</button>
-      <button class="key key-equal">=</button>
+<body> 
+  <div class="calculator-grid">
+    <div class="screen">
+       <div class="previous-operand">1234</div>
+       <div class="current-operand">56789</div>
     </div>
-  </div>
-</div>  
-
-<script src="main.js"></script>    
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button>DEL</button>
+    <button>AC</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>*</button>
+    <button>/</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>+</button>
+    <button>-</button>
+    <button class="span-two">0</button>
+    <button>.</button>
+    <button class="span-two">=</button>
+  </div>      
 </body>
 </html>
