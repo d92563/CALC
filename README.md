@@ -1,2 +1,3 @@
 # CALC
-Calculator with JS, HTML and CSS
+
+Simple calculator made with JS, HTML5 and CSS3.
