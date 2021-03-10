@@ -12,13 +12,15 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    grid-template-columns: repeat(5, minmax(40px, 80px));
-    grid-template-rows: minmax(100px, auto) repeat(4, 80px);
+    
+    margin: 10px;
+    grid-template-columns: repeat(5, minmax(50px, 70px));
+    grid-template-rows: minmax(40px, auto) minmax(80px, auto) repeat(4, 70px);
 }
 
 .calculator-grid > button {
     cursor: pointer;
-    font-size: 1.8rem;
+    font-size: 1.8em;
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.75);
 
@@ -31,7 +33,16 @@ body {
 .span-two {
     grid-column: span 2;
 }
-
+.calculator-model {
+    grid-column: 1 / -1;
+    background-color: rgba(100, 93, 93, 0.75);
+    display: flex;
+    font-size: 1.6em;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    padding: 5px;
+}
 .screen {
     grid-column: 1 / -1;
     background-color: rgba(0, 0, 0, 0.75);
@@ -40,6 +51,7 @@ body {
     align-items: flex-end;
     flex-direction: column;
     padding: 10px;
+    border: 2px solid white;
     overflow-wrap: break-word;
     word-break: break-all;
 }
