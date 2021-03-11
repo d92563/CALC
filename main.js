@@ -9,76 +9,78 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 class Calculator {
 
     constructor(previousOperandTextElement, currentOperandTextElement) {
-        this.previousOperandTextElement = previousOperandTextElement
-        this.currentOperandTextElement = currentOperandTextElement
-        this.clear()
+        this.previousOperandTextElement = previousOperandTextElement;
+        this.currentOperandTextElement = currentOperandTextElement;
+        this.readyToReset = false;
+        this.clear();   
     }
 
     clear() {
-        this.currentOperand = ''
-        this.previousOperand = ''
-        this.operation = undefined
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
 
     }
 
     appendNumber(number) {
-        if (number === '.' && this.currentOperand.includes('.')) return
-        this.currentOperand = this.currentOperand.toString() + number.toString()
+        if (number === '.' && this.currentOperand.includes('.')) return;
+        this.currentOperand = this.currentOperand.toString() + number.toString();
 
     }
 
 
 
     chooseOperation(operation) {
-        if (this.currentOperand === '') return
+        if (this.currentOperand === '') return;
         if (this.previousOperand !== '') {
-            this.calculate()
+            this.calculate();
         }
-        this.operation = operation
-        this.previousOperand = this.currentOperand
-        this.currentOperand = ''
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
 
 
     }
 
     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand
+        this.currentOperandTextElement.innerText = this.currentOperand;
         if (this.operation != null) {
-            this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`
+            this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
         } else {
-            this.previousOperandTextElement.innerText = ''
+            this.previousOperandTextElement.innerText = '';
         }
     }
 
     
 
     calculate() {
-        let computation
-        const current = parseFloat(this.currentOperand)
-        const previous = parseFloat(this.previousOperand)
-        if (isNaN(current) || isNaN(previous)) return
+        let computation;
+        const current = parseFloat(this.currentOperand);
+        const previous = parseFloat(this.previousOperand);
+        if (isNaN(current) || isNaN(previous)) return;
         switch(this.operation) {
             case '*':
-                computation = previous * current
-                break
+                computation = previous * current;
+                break;
             case '/':
-                computation = previous / current
-                 break
+                computation = previous / current;
+                 break;
             case '+':
-                computation = previous + current
-                break
+                computation = previous + current;
+                break;
             case '-':
-                computation = previous - current
-                break
-            default: return
+                computation = previous - current;
+                break;
+            default: return;
         }
-        this.currentOperand = computation
-        this.previousOperand = ''
-        this.operation = undefined
+        this.readyToReset = true;
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = ''; 
     }
 
     deleteLast() {
-        this.currentOperand = this.currentOperand.toString().slice(0, -1)
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     
@@ -89,33 +91,35 @@ const calculator = new Calculator(previousOperandTextElement, currentOperandText
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerText)
-        calculator.updateDisplay()
+        if (calculator.previousOperand === '' && calculator.currentOperand !== '' && calculator.readyToReset) {
+            calculator.currentOperand = '';
+            calculator.readyToReset = false;
+        }
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+        
     })
 })
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-        calculator.chooseOperation(button.innerText)
-        calculator.updateDisplay()
+        calculator.chooseOperation(button.innerText);
+        calculator.updateDisplay();
     })
 })
 
-equalsButton.addEventListener('click', button => {
-    calculator.calculate()
-    calculator.updateDisplay()
+equalsButton.addEventListener('click', () => {
+    calculator.calculate();
+    calculator.updateDisplay();
 })
 
-allClearButton.addEventListener('click', button => {
-    calculator.clear()
-    calculator.updateDisplay()
+allClearButton.addEventListener('click', () => {
+    calculator.clear();
+    calculator.updateDisplay();
 })
 
-deleteButtton.addEventListener('click', button => {
-    calculator.deleteLast()
-    calculator.updateDisplay()
+deleteButtton.addEventListener('click', () => {
+    if (calculator.readyToReset) return;
+    calculator.deleteLast();
+    calculator.updateDisplay();
 })
-
-
-
-
